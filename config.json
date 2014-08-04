@@ -1,0 +1,143 @@
+{
+    "menus": {
+        "top-menu":    "Top Menu",
+        "header-menu": "Header Menu",
+        "footer-menu": "Footer Menu",
+        "bottom-menu": "Bottom Menu"
+    },
+
+
+    "debug": {
+        "enabled": true,
+        "showall": true,
+        "grid": false,
+        "widgets": true
+    },
+
+
+    "header": {
+        "__comment": "HEADER WIDGETS",
+        "widget_prefix": {
+            "enabled": true
+        },
+        "widget_first": {
+            "enabled": true
+        },
+        "widget_second": {
+            "enabled": true
+        },
+        "widget_postfix": {
+            "enabled": true
+        }
+    },
+
+
+    "content": {
+        "__comment": "PREFIX: COLUMNS MUST ADD UP TO 12",
+        "widget_prefix1": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 6,
+                "large":  3
+            }
+        },
+        "widget_prefix2": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 6,
+                "large":  3
+            }
+        },
+        "widget_prefix3": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 6,
+                "large":  3
+            }
+        },
+        "widget_prefix4": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 6,
+                "large":  3
+            }
+        },
+
+        "__comment": "CONTENT AREA: will become 12 - first - second",
+        "widget_first": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 3,
+                "large":  3
+            }
+        },
+        "widget_second": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 2,
+                "large":  2
+            }
+        },
+
+        "__comment": "Column setting not available for these locations",
+        "widget_top": {
+            "enabled": true
+        },
+        "widget_bottom": {
+            "enabled": true
+        }
+    },
+
+
+    "footer": {
+        "__comment": "FOOTER WIDGETS",
+        "widget_prefix1": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 6,
+                "large":  3
+            }
+        },
+        "widget_prefix2": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 6,
+                "large":  3
+            }
+        },
+        "widget_prefix3": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 6,
+                "large":  3
+            }
+        },
+        "widget_prefix4": {
+            "enabled": true,
+            "columns": {
+                "small":  12,
+                "medium": 6,
+                "large":  3
+            }
+        },
+
+        "widget_top": {
+            "enabled": true
+        },
+        "widget_bottom": {
+            "enabled": true
+        },
+        "widget_postfix": {
+            "enabled": true
+        }
+    }
+}
