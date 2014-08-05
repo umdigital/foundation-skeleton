@@ -79,7 +79,7 @@
     <?php if( has_nav_menu( 'header-menu', 'foundation_skeleton' ) ): ?>
     <div id="section-header-menu">
         <div class="row">
-            <div class="<?php echo FoundationSkeleton::getColumns( 'menus:header_menu' );?> columns osfwMenu">
+            <div class="<?php echo FoundationSkeleton::getColumns( 'menus:header_menu' );?> columns fskelMenu">
                 <a href="javascript:void();" class="hamburger-header"><h3><i class="fa fa-bars"></i>Menu</h3></a>
                  <?php wp_nav_menu(array(
                     'container'      => '',

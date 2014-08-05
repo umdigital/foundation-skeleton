@@ -1,4 +1,84 @@
-/* #Debug Styles
+/* HEADER MENU
+================================================== */
+#section-header-menu .fskelMenu .hamburger-header h3 {
+    display: none;
+}
+
+#section-header-menu .fskelMenu.responsive .hamburger-header h3 {
+    display: block;
+}
+#section-header-menu .fskelMenu .hamburger-header h3 .fa {
+    padding-right: 0.9375rem;
+}
+
+#section-header-menu .fskelMenu ul {
+    margin: 0 -5px;
+}
+
+#section-header-menu .fskelMenu ul li {
+    display: inline;
+    float: left;
+    white-space: nowrap;
+    line-height: 1em;
+    padding: 0 5px;
+}
+
+#section-header-menu .fskelMenu ul li.menu-item-home a {
+}
+
+#section-header-menu .fskelMenu ul li.menu-item-home a:before {
+    content: "\f015";
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#section-header-menu .fskelMenu ul li.menu-item-home a span {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+#section-header-menu .fskelMenu.responsive ul li {
+    display: block;
+    float: none;
+}
+
+/* TOP/BOTTOM MENUS
+================================================== */
+#section-top-menu .fskelMenu > ul {
+    float: right;
+}
+
+#section-top-menu .fskelMenu > ul,
+#section-bottom-menu .fskelMenu > ul {
+    margin: 0 -5px;
+}
+
+#section-top-menu .fskelMenu > ul > li,
+#section-bottom-menu .fskelMenu > ul > li {
+    display: inline;
+    float: left;
+    padding: 0 5px;
+}
+
+
+/* MISC
+================================================== */
+/* HIDE WP STATS SMILE IMAGE */
+img#wpstats {
+    display: none;
+}
+
+
+/* DEBUG 
 ================================================== */
 .fskelWidget .fskelWidgetDescription {
     display: none;

@@ -12,7 +12,6 @@
 
 include 'includes/functions-phpfix.php';
 
-
 class FoundationSkeleton
 {
     static private $_version = 1.0;
@@ -48,8 +47,12 @@ class FoundationSkeleton
         foreach( self::$_config as $zone => $configs ) {
             foreach( $configs as $key => $config ) {
                 if( (strpos( $key, 'widget_' ) !== false) && $config['enabled'] ) {
+                    $config['name'] = isset( $config['name'] ) && $config['name']
+                                    ? $config['name']
+                                    : ucwords( str_replace( '_', ' ', $zone .'_'. $key ) );
+
                     register_sidebar(array(
-                        'name'          => __( ucwords( str_replace( '_', ' ', $zone .'_'. $key ) ), 'foundation_skeleton' ),
+                        'name'          => __( $config['name'], 'foundation_skeleton' ),
                         'id'            => $zone .'-'. $key,
                         'before_widget' => '<div id="%1$s" class="widget %2$s">',
                         'after_widget'  => '</div>',
@@ -257,7 +260,7 @@ class FoundationSkeleton
                 }
             }
         
-            if( $allDisabled ) {
+            if( $allDisabled && self::$_config['debug']['enabled'] ) {
                 $return .= ' fskelInactive';
             }
 

@@ -79,14 +79,14 @@
     </div><!-- SECTION-FOOTER -->
 
     <?php if( has_nav_menu( 'footer-menu', 'open_skeleton' ) ): ?>
-    <div id="section-footer-menu">
+    <div id="section-bottom-menu">
         <div class="row">
-            <div class="<?php echo FoundationSkeleton::getColumns( 'menus:footer_menu' );?> columns osfwMenu">
+            <div class="<?php echo FoundationSkeleton::getColumns( 'menus:bottom_menu' );?> columns fskelMenu">
                 <?php wp_nav_menu(array(
                     'container'      => '',
                     'fallback_cb'    => false,
-                    'menu_class'     => 'footer-menu clearfix',
-                    'theme_location' => 'footer-menu'
+                    'menu_class'     => 'bottom-menu clearfix',
+                    'theme_location' => 'bottom-menu'
                 ));?>
             </div>
         </div>

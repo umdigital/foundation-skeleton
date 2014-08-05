@@ -1,8 +1,7 @@
 {
     "menus": {
-        "top-menu":    "Top Menu",
+        "top-menu"   : "Top Menu",
         "header-menu": "Header Menu",
-        "footer-menu": "Footer Menu",
         "bottom-menu": "Bottom Menu"
     },
 
@@ -10,24 +9,28 @@
     "debug": {
         "enabled": true,
         "showall": true,
-        "grid": false,
-        "widgets": true
+        "grid"   : false,
+        "widgets": false
     },
 
 
     "header": {
         "__comment": "HEADER WIDGETS",
         "widget_prefix": {
-            "enabled": true
+            "enabled": true,
+            "name"   : ""
         },
         "widget_first": {
-            "enabled": true
+            "enabled": true,
+            "name"   : ""
         },
         "widget_second": {
-            "enabled": true
+            "enabled": true,
+            "name"   : ""
         },
         "widget_postfix": {
-            "enabled": true
+            "enabled": true,
+            "name"   : ""
         }
     },
 
@@ -36,6 +39,7 @@
         "__comment": "PREFIX: COLUMNS MUST ADD UP TO 12",
         "widget_prefix1": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 6,
@@ -44,6 +48,7 @@
         },
         "widget_prefix2": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 6,
@@ -52,6 +57,7 @@
         },
         "widget_prefix3": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 6,
@@ -60,6 +66,7 @@
         },
         "widget_prefix4": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 6,
@@ -70,6 +77,7 @@
         "__comment": "CONTENT AREA: will become 12 - first - second",
         "widget_first": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 3,
@@ -78,6 +86,7 @@
         },
         "widget_second": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 2,
@@ -87,10 +96,12 @@
 
         "__comment": "Column setting not available for these locations",
         "widget_top": {
-            "enabled": true
+            "enabled": true,
+            "name"   : ""
         },
         "widget_bottom": {
-            "enabled": true
+            "enabled": true,
+            "name"   : ""
         }
     },
 
@@ -99,6 +110,7 @@
         "__comment": "FOOTER WIDGETS",
         "widget_prefix1": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 6,
@@ -107,6 +119,7 @@
         },
         "widget_prefix2": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 6,
@@ -115,6 +128,7 @@
         },
         "widget_prefix3": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 6,
@@ -123,6 +137,7 @@
         },
         "widget_prefix4": {
             "enabled": true,
+            "name"   : "",
             "columns": {
                 "small":  12,
                 "medium": 6,
@@ -131,13 +146,16 @@
         },
 
         "widget_top": {
-            "enabled": true
+            "enabled": true,
+            "name"   : ""
         },
         "widget_bottom": {
-            "enabled": true
+            "enabled": true,
+            "name"   : ""
         },
         "widget_postfix": {
-            "enabled": true
+            "enabled": true,
+            "name"   : ""
         }
     }
 }
