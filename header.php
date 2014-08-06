@@ -11,6 +11,7 @@
     <? wp_head(); ?>
 </head>
 <body <? body_class(); ?>>
+<? FoundationSkeleton::getGridOverlay(); ?>
 <div id="wrapper">
     <? if( has_nav_menu( 'top-menu', 'foundation_skeleton' ) ): ?>
     <div id="section-top-menu">

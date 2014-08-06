@@ -54,9 +54,7 @@
                 <?php endif;?>
 
                 <div id="footer-content" class="<?php echo FoundationSkeleton::getColumns( 'footer:content' );?> columns">
-                    <div class="copyright">
-                        <?php esc_attr_e('&copy;', 'open_skeleton'); ?> <?php _e(date('Y')); ?> <a href="<?php echo home_url('/') ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>"><?php bloginfo('name'); ?></a>
-                    </div>
+                    <? get_template_part( 'templates/footer' ); ?>
                 </div>
 
                 <?php if( ($class = FoundationSkeleton::areaEnabled( 'footer:widget_bottom' )) !== false ): ?>

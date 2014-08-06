@@ -96,6 +96,20 @@ class FoundationSkeleton
         // image stuff
         add_theme_support( 'post-thumbnails' );
 
+        // add thumbnail sizes
+        foreach( self::$_config['thumbnails'] as $key => $thumb ) {
+            if( $key == 'example-thumb-key' ) {
+                continue;
+            }
+
+            add_image_size(
+                $key,
+                $thumb['width'],
+                $thumb['height'],
+                $thumb['crop']
+            );
+        }
+
         /**
          * This feature enables custom-menus support for a theme.
          * @see http://codex.wordpress.org/Function_Reference/register_nav_menus
@@ -150,7 +164,22 @@ class FoundationSkeleton
         wp_enqueue_script( 'fskeleton', PARENT_URL .'/scripts/fskeleton.js', array( 'jquery' ), self::$_version );
 
         if( self::$_config['debug']['enabled'] ) {
+            wp_enqueue_style( 'fskeleton-debug', PARENT_URL .'/styles/fskeleton-debug.css', null, self::$_version );
             wp_enqueue_script( 'fskeleton-debug', PARENT_URL .'/scripts/fskeleton-debug.js', array( 'jquery' ), self::$_version );
+        }
+
+        if( PARENT_DIR !== CHILD_DIR ) {
+            $files = glob( CHILD_DIR . DIRECTORY_SEPARATOR . 'styles' . DIRECTORY_SEPARATOR .'*.css' );
+            foreach( $files as $file ) {
+                $file = str_replace( CHILD_DIR, '', $file );
+                wp_enqueue_style( 'child-'. str_replace( '.css', '', basename( $file ) ), CHILD_URL . $file, null, self::$_version );
+            }
+
+            $files = glob( CHILD_DIR . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR .'*.js' );
+            foreach( $files as $file ) {
+                $file = str_replace( CHILD_DIR, '', $file );
+                wp_enqueue_script( 'child-'. str_replace( '.js', '', basename( $file ) ), CHILD_URL . $file, array( 'jquery' ), self::$_version );
+            }
         }
     }
 
@@ -171,6 +200,30 @@ class FoundationSkeleton
         <script src="'. PARENT_URL .'/scripts/rem.js" type="text/javascript"></script>
         <![endif]-->
         ';
+
+    }
+
+    static public function getGridOverlay() {
+        if( self::$_config['debug']['enabled'] ) {
+            echo '
+            <div id="fskelGridOverlay">
+                <div class="row">
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                </div>
+            </div>
+            ';
+        }
     }
 
     // EXCERPT MORE LINK
