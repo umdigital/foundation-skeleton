@@ -68,7 +68,10 @@ class FoundationSkeleton
         add_action( 'wp_enqueue_scripts', 'FoundationSkeleton::enqueue', 1 );
         add_action( 'wp_head', 'FoundationSkeleton::wpHead', 99 );
         add_action( 'wp_footer', 'FoundationSkeleton::wpFooter', 99 );
-        add_action( 'wp_before_admin_bar_render', 'FoundationSkeleton::adminBarRender' );
+
+        if( !is_admin() ) {
+            add_action( 'wp_before_admin_bar_render', 'FoundationSkeleton::adminBarRender' );
+        }
 
         add_filter( 'body_class', 'FoundationSkeleton::bodyClass' );
         add_filter( 'excerpt_more', 'FoundationSkeleton::excerptMore' );
