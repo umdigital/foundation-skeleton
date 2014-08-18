@@ -1,0 +1,8 @@
+{
+    "debug": {
+        "enabled": true,
+        "showall": false,
+        "grid"   : true,
+        "widgets": true
+    }
+}

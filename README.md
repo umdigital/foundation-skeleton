@@ -2,7 +2,10 @@ Foundation Skeleton
 ===================
 Wordpress base theme built on the Foundation Responsive Framework.
 
-## Configuration
+## Configurationa
+* Copy the *child-theme-template* directory to wp-content/themes and rename to your desired theme name slug.
+* Edit the config.json and style.css files to your desire.  Make sure to update the comments in the style.css file.
+
 Default theme configurations are set in a config.json file.  A child-theme can override the parent themes config.json file options.  A child theme does not need to contain every config.json option but only the ones it wants to change (ideal).
 
 The following is configured within the config.json file
