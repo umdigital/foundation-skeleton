@@ -1,4 +1,5 @@
 <?php
+//set_site_transient('update_themes', null); //tmp
 
 /*-----------------------------------------------------------------------------------*/
 /* Set Proper Parent/Child theme paths for inclusion
@@ -16,6 +17,12 @@ class FoundationSkeleton
 {
     static private $_version = 1.0;
     static private $_config  = array();
+
+    static private $_gitUpdate = array(
+        'url' => 'https://github.com/nobleclem/foundation-skeleton',
+        'zip' => 'https://github.com/nobleclem/foundation-skeleton/zipball/master',
+        'raw' => 'https://raw.githubusercontent.com/nobleclem/foundation-skeleton/master',
+    );
 
     static public function init()
     {
@@ -78,6 +85,13 @@ class FoundationSkeleton
 
         // ALLOW SHORTCODES IN TEXT WIDGET
         add_filter('widget_text', 'do_shortcode');
+
+
+        // THEME UPDATE HOOKS
+        add_filter( 'pre_set_site_transient_update_themes', 'FoundationSkeleton::updateCheck' );
+        if( is_admin() ) {
+            get_transient( 'update_themes' );
+        }
     }
 
     /**
@@ -284,7 +298,7 @@ class FoundationSkeleton
         }
     }
 
-    function areaEnabled( $config )
+    static public function areaEnabled( $config )
     {
         $debug = 'fskelWidget';
 
@@ -342,7 +356,7 @@ class FoundationSkeleton
         }
     }
 
-    function getColumns( $config, $default = null )
+    static public function getColumns( $config, $default = null )
     {
         $columns = $default ? $default : array( 'large' => 12 );
 
@@ -360,7 +374,7 @@ class FoundationSkeleton
         return implode( ' ', $return );
     }   
 
-    function getContentColumns()
+    static public function getContentColumns()
     {
         $columns = self::$_config['general']['columns'];
         $columns = array(
@@ -391,6 +405,30 @@ class FoundationSkeleton
         }
 
         return implode( ' ', $return );
+    }
+
+
+    // FOLLOWING CODE IS FOR THEME UPDATE
+    static public function updateCheck( $checkedData )
+    {
+        $raw = wp_remote_get(
+            trailingslashit( self::$_gitUpdate['raw'] ) .'style.css',
+            array( 'sslverify' => true )
+        );
+
+        if( preg_match( '#^\s*Version\:\s*(.*)$#im', $raw['body'], $matches ) ) {
+            $version = $matches[1];
+        }
+
+        if( $version && version_compare( $version, self::$_version ) ) {
+            $checkedData->response[ get_option( 'template' ) ] = array(
+                'package'     => self::$_gitUpdate['zip'],
+                'new_version' => $version,
+                'url'         => self::$_gitUpdate['url']
+            );
+        }
+
+        return $checkedData;
     }
 }
 FoundationSkeleton::init();
