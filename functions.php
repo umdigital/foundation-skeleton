@@ -92,7 +92,7 @@ class FoundationSkeleton
 
         // THEME UPDATE HOOKS
         add_filter( 'pre_set_site_transient_update_themes', 'FoundationSkeleton::_updateCheck' );
-        add_filter( 'upgrader_post_install', 'FoundationSkeleton::_updateCleanup', 10, 3 );
+        add_filter( 'upgrader_source_selection', 'FoundationSkeleton::_updateSource', 10, 3 );
         if( is_admin() ) {
             get_transient( 'update_themes' );
         }
@@ -435,16 +435,20 @@ class FoundationSkeleton
         return $checkedData;
     }
 
-    static public function _updateCleanup( $true, $hookExtra, $result )
+    static public function _updateSource( $source, $remote, $upgrader )
     {
         global $wp_filesystem;
 
+        // check for upgrade process
+        if( !is_a( $upgrader, 'Theme_Upgrader' ) || !isset( $source, $remote ) ) {
+            return $source;
+        }
+
         // Move & Activate
         $destination = get_theme_root() . DIRECTORY_SEPARATOR . self::$_gitUpdate['dir'];
-        $wp_filesystem->move( $result['destination'], $destination );
-        $result['destination'] = $destination;
+        $wp_filesystem->move( $source, $destination, true );
 
-        return $result;
+        return new WP_Error();
     }
 }
 FoundationSkeleton::init();
