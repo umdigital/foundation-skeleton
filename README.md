@@ -2,7 +2,7 @@ Foundation Skeleton
 ===================
 Wordpress base theme built on the Foundation Responsive Framework.
 
-## Configurationa
+## Configuration
 * Copy the *child-theme-template* directory to wp-content/themes and rename to your desired theme name slug.
 * Edit the config.json and style.css files to your desire.  Make sure to update the comments in the style.css file.
 
