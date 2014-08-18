@@ -445,8 +445,11 @@ class FoundationSkeleton
         }
 
         // Move & Activate
-        $destination = get_theme_root() . DIRECTORY_SEPARATOR . self::$_gitUpdate['dir'];
-        $wp_filesystem->move( $source, $destination, true );
+        $destination = trailingslashit( $remote ) . self::$_gitUpdate['dir'];
+
+        if( $wp_filesystem->move( $source, $destination, true ) ) {
+            return $destination;
+        }
 
         return new WP_Error();
     }
