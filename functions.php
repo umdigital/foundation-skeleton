@@ -25,11 +25,15 @@ class FoundationSkeleton
         'raw' => 'https://raw.githubusercontent.com/nobleclem/foundation-skeleton/master',
     );
 
+    /**
+     * Load config, add actions/filters
+     **/
     static public function init()
     {
         // just in case it wasn't installed with the intended name
         self::$_gitUpdate['dir'] = get_option( 'template' );
 
+        // get current version
         $theme = wp_get_theme();
         self::$_version = $theme->get( 'Version' );
 
@@ -38,6 +42,7 @@ class FoundationSkeleton
             self::$_config = json_decode( file_get_contents( PARENT_DIR .'/config.json' ), true );
         }
 
+        // check for child theme config and merge onto default
         if( (CHILD_DIR != PARENT_DIR) && is_file( CHILD_DIR .'/config.json' ) ) {
             $tConfig = json_decode( file_get_contents( CHILD_DIR .'/config.json' ), true );
 
@@ -99,9 +104,9 @@ class FoundationSkeleton
     }
 
     /**
-     * Override the settings in config.ini for a specific template.
+     * Override the settings in config.json for a specific template.
      * NOTE: only works to disable or resize.  Cannot enable something that is not globally enabled.
-    */
+     **/
     static public function setConfig( $zone, $option, $flag, $value )
     {
         if( isset( self::$_config[ $zone ][ $option ][ $flag ] ) ) {
@@ -109,6 +114,9 @@ class FoundationSkeleton
         }
     }
 
+    /**
+     * Standard theme setup logic
+     **/
     static public function setupTheme()
     {
         // Adds RSS feed links to <head> for posts and comments.
@@ -156,6 +164,9 @@ class FoundationSkeleton
     }
 
 
+    /**
+     * Add debugging classes (as needed)
+     **/
     static public function bodyClass( $classes )
     {
         if( isset( self::$_config['debug']['enabled'] ) && self::$_config['debug']['enabled'] ) {
@@ -174,6 +185,9 @@ class FoundationSkeleton
     }
 
 
+    /**
+     * Load base CSS/JS & autoload from styles/*.css and scripts/*.js for child themes
+     **/
     static public function enqueue()
     {
         wp_enqueue_style( 'foundation-normalize', PARENT_URL .'/vendor/foundation5/css/normalize.css', null, self::$_version );
@@ -189,6 +203,7 @@ class FoundationSkeleton
             wp_enqueue_script( 'fskeleton-debug', PARENT_URL .'/scripts/fskeleton-debug.js', array( 'jquery' ), self::$_version );
         }
 
+        // autoload child styles/scripts from styles/scripts directories
         if( PARENT_DIR !== CHILD_DIR ) {
             $files = glob( CHILD_DIR . DIRECTORY_SEPARATOR . 'styles' . DIRECTORY_SEPARATOR .'*.css' );
             foreach( $files as $file ) {
@@ -204,7 +219,9 @@ class FoundationSkeleton
         }
     }
 
-    // LOAD IE CONDITIONALS
+    /**
+     * ADD HEADER IE CONDITIONALS
+     **/
     static public function wpHead()
     {
         echo '
@@ -214,6 +231,9 @@ class FoundationSkeleton
         ';
     }
 
+    /**
+     * ADD FOOTER IE CONDITIONALS
+     **/
     static public function wpFooter()
     {
         echo '
@@ -224,6 +244,9 @@ class FoundationSkeleton
 
     }
 
+    /**
+     * Add grid overlay html
+     */
     static public function getGridOverlay() {
         if( self::$_config['debug']['enabled'] ) {
             echo '
@@ -255,6 +278,7 @@ class FoundationSkeleton
         return ' <a href="'. get_permalink( $post->ID ) .'" class="readmore">Read more</a>';
     }
 
+    // check if the archive paginates
     static public function willPaginate()
     {
         global $wp_query;
@@ -266,6 +290,9 @@ class FoundationSkeleton
         return false;
     }
 
+    /**
+     * Add admin bar options if debug enabled
+     **/
     static public function adminBarRender()
     {
         global $wp_admin_bar;
@@ -302,6 +329,9 @@ class FoundationSkeleton
         }
     }
 
+    /**
+     * Check if an area is enabled or not
+     **/
     static public function areaEnabled( $config )
     {
         $debug = 'fskelWidget';
@@ -360,6 +390,9 @@ class FoundationSkeleton
         }
     }
 
+    /**
+     * Get columns for a location
+     **/
     static public function getColumns( $config, $default = null )
     {
         $columns = $default ? $default : array( 'large' => 12 );
@@ -378,6 +411,9 @@ class FoundationSkeleton
         return implode( ' ', $return );
     }   
 
+    /**
+     * Calculate and get columns for main content well
+     **/
     static public function getContentColumns()
     {
         $columns = self::$_config['general']['columns'];
@@ -412,7 +448,9 @@ class FoundationSkeleton
     }
 
 
-    // FOLLOWING CODE IS FOR THEME UPDATE
+    /**
+     * Check for updated version
+     **/
     static public function _updateCheck( $checkedData )
     {
         $raw = wp_remote_get(
@@ -435,6 +473,9 @@ class FoundationSkeleton
         return $checkedData;
     }
 
+    /**
+     * Rename downloaded source directory
+     **/
     static public function _updateSource( $source, $remote, $upgrader )
     {
         global $wp_filesystem;
