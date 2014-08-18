@@ -92,7 +92,7 @@ class FoundationSkeleton
 
         // THEME UPDATE HOOKS
         add_filter( 'pre_set_site_transient_update_themes', 'FoundationSkeleton::_updateCheck' );
-        add_filter( 'upgrader_post_install', 'FoundationSkeleton::_updateCleanup' ), 10, 3 );
+        add_filter( 'upgrader_post_install', 'FoundationSkeleton::_updateCleanup', 10, 3 );
         if( is_admin() ) {
             get_transient( 'update_themes' );
         }
