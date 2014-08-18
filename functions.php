@@ -192,7 +192,7 @@ class FoundationSkeleton
     {
         wp_enqueue_style( 'foundation-normalize', PARENT_URL .'/vendor/foundation5/css/normalize.css', null, self::$_version );
         wp_enqueue_style( 'foundation-base', PARENT_URL .'/vendor/foundation5/css/foundation.min.css', null, self::$_version );
-        wp_enqueue_style( 'font-awesome', PARENT_URL .'/vendor/font-awesome-4.0.3/css/font-awesome.min.css', null, self::$_version );
+        wp_enqueue_style( 'font-awesome', PARENT_URL .'/vendor/font-awesome-4.1.0/css/font-awesome.min.css', null, self::$_version );
         wp_enqueue_style( 'fskeleton-base', PARENT_URL .'/styles/base.css', null, self::$_version );
 
         wp_enqueue_script( 'jq-placeholder', PARENT_URL .'/scripts/jquery.placeholder.js', array( 'jquery' ), self::$_version );
