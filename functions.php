@@ -1,5 +1,4 @@
 <?php
-//set_site_transient('update_themes', null); //tmp
 
 /*-----------------------------------------------------------------------------------*/
 /* Set Proper Parent/Child theme paths for inclusion
@@ -11,6 +10,7 @@
 @define( 'PARENT_URL', get_template_directory_uri() );
 @define( 'CHILD_URL', get_stylesheet_directory_uri() );
 
+// stuff for old versions of php
 include 'includes/functions-phpfix.php';
 
 class FoundationSkeleton
