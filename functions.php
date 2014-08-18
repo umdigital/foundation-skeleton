@@ -1,4 +1,5 @@
 <?php
+set_site_transient('update_themes', null);
 
 /*-----------------------------------------------------------------------------------*/
 /* Set Proper Parent/Child theme paths for inclusion
@@ -485,9 +486,13 @@ class FoundationSkeleton
             return $source;
         }
 
-        // Move & Activate
-        $destination = trailingslashit( $remote ) . self::$_gitUpdate['dir'];
+        // check if this theme is being updated
+        if( stripos( basename( $source ), basename( self::$_gitUpdate['rul'] ) ) === false ) {
+            return $source;
+        }
 
+        // Rename source
+        $destination = trailingslashit( $remote ) . self::$_gitUpdate['dir'];
         if( $wp_filesystem->move( $source, $destination, true ) ) {
             return $destination;
         }
