@@ -459,6 +459,10 @@ class FoundationSkeleton
             array( 'sslverify' => true )
         );
 
+        if( !is_array( $raw ) || !isset( $raw['body'] ) ) {
+            return $checkedData;
+        }
+
         if( preg_match( '#^\s*Version\:\s*(.*)$#im', $raw['body'], $matches ) ) {
             $version = $matches[1];
         }
