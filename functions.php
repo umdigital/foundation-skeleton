@@ -487,7 +487,7 @@ class FoundationSkeleton
         }
 
         // check if this theme is being updated
-        if( stripos( basename( $source ), basename( self::$_gitUpdate['rul'] ) ) === false ) {
+        if( stripos( basename( $source ), basename( self::$_gitUpdate['url'] ) ) === false ) {
             return $source;
         }
 
