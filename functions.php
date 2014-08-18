@@ -19,6 +19,7 @@ class FoundationSkeleton
     static private $_config  = array();
 
     static private $_gitUpdate = array(
+        'dir' => 'foundation-skeleton',
         'url' => 'https://github.com/nobleclem/foundation-skeleton',
         'zip' => 'https://github.com/nobleclem/foundation-skeleton/zipball/master',
         'raw' => 'https://raw.githubusercontent.com/nobleclem/foundation-skeleton/master',
@@ -26,6 +27,8 @@ class FoundationSkeleton
 
     static public function init()
     {
+        // just in case it wasn't installed with the intended name
+        self::$_gitUpdate['dir'] = get_option( 'template' );
 
         $theme = wp_get_theme();
         self::$_version = $theme->get( 'Version' );
@@ -88,7 +91,8 @@ class FoundationSkeleton
 
 
         // THEME UPDATE HOOKS
-        add_filter( 'pre_set_site_transient_update_themes', 'FoundationSkeleton::updateCheck' );
+        add_filter( 'pre_set_site_transient_update_themes', 'FoundationSkeleton::_updateCheck' );
+        add_filter( 'upgrader_post_install', 'FoundationSkeleton::_updateCleanup' ), 10, 3 );
         if( is_admin() ) {
             get_transient( 'update_themes' );
         }
@@ -409,7 +413,7 @@ class FoundationSkeleton
 
 
     // FOLLOWING CODE IS FOR THEME UPDATE
-    static public function updateCheck( $checkedData )
+    static public function _updateCheck( $checkedData )
     {
         $raw = wp_remote_get(
             trailingslashit( self::$_gitUpdate['raw'] ) .'style.css',
@@ -429,6 +433,18 @@ class FoundationSkeleton
         }
 
         return $checkedData;
+    }
+
+    static public function _updateCleanup( $true, $hookExtra, $result )
+    {
+        global $wp_filesystem;
+
+        // Move & Activate
+        $destination = get_theme_root() . DIRECTORY_SEPARATOR . self::$_gitUpdate['dir'];
+        $wp_filesystem->move( $result['destination'], $destination );
+        $result['destination'] = $destination;
+
+        return $result;
     }
 }
 FoundationSkeleton::init();
