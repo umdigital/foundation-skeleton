@@ -21,9 +21,9 @@ class FoundationSkeleton
 
     static private $_gitUpdate = array(
         'dir' => 'foundation-skeleton',
-        'url' => 'https://github.com/nobleclem/foundation-skeleton',
-        'zip' => 'https://github.com/nobleclem/foundation-skeleton/zipball/master',
-        'raw' => 'https://raw.githubusercontent.com/nobleclem/foundation-skeleton/master',
+        'url' => 'https://github.com/umichcreative/foundation-skeleton',
+        'zip' => 'https://github.com/umichcreative/foundation-skeleton/zipball/master',
+        'raw' => 'https://raw.githubusercontent.com/umichcreative/foundation-skeleton/master',
     );
 
     /**
