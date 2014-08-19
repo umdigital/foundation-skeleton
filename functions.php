@@ -1,5 +1,4 @@
 <?php
-set_site_transient('update_themes', null);
 
 /*-----------------------------------------------------------------------------------*/
 /* Set Proper Parent/Child theme paths for inclusion
