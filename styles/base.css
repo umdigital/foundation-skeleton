@@ -1,21 +1,21 @@
 /* HEADER MENU
 ================================================== */
-#section-header-menu .fskelMenu .hamburger-header h3 {
+#zone-header-menu .fskelMenu .hamburger-header h3 {
     display: none;
 }
 
-#section-header-menu .fskelMenu.responsive .hamburger-header h3 {
+#zone-header-menu .fskelMenu.responsive .hamburger-header h3 {
     display: block;
 }
-#section-header-menu .fskelMenu .hamburger-header h3 .fa {
+#zone-header-menu .fskelMenu .hamburger-header h3 .fa {
     padding-right: 0.9375rem;
 }
 
-#section-header-menu .fskelMenu ul {
+#zone-header-menu .fskelMenu ul {
     margin: 0 -5px;
 }
 
-#section-header-menu .fskelMenu ul li {
+#zone-header-menu .fskelMenu ul li {
     display: inline;
     float: left;
     white-space: nowrap;
@@ -23,10 +23,10 @@
     padding: 0 5px;
 }
 
-#section-header-menu .fskelMenu ul li.menu-item-home a {
+#zone-header-menu .fskelMenu ul li.menu-item-home a {
 }
 
-#section-header-menu .fskelMenu ul li.menu-item-home a:before {
+#zone-header-menu .fskelMenu ul li.menu-item-home a:before {
     content: "\f015";
     display: inline-block;
     font-family: FontAwesome;
@@ -37,7 +37,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-#section-header-menu .fskelMenu ul li.menu-item-home a span {
+#zone-header-menu .fskelMenu ul li.menu-item-home a span {
     position: absolute !important;
     height: 1px;
     width: 1px;
@@ -46,7 +46,7 @@
     clip: rect(1px, 1px, 1px, 1px);
 }
 
-#section-header-menu .fskelMenu.responsive ul li {
+#zone-header-menu .fskelMenu.responsive ul li {
     display: block;
     float: none;
 }

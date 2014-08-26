@@ -31,7 +31,7 @@
 
         $('input').placeholder();
 
-        var mainMenuWrap = $('#section-header-menu .fskelMenu');
+        var mainMenuWrap = $('#zone-header-menu .fskelMenu');
         var mainMenuList = mainMenuWrap.find('.header-menu');
 
         var totalWidth = 10;
@@ -54,7 +54,7 @@
             }
         }).trigger('resize');
 
-        $(document).on('click', '#section-header-menu .hamburger-header', function(){
+        $(document).on('click', '#zone-header-menu .hamburger-header', function(){
             mainMenuList.slideToggle();
         });
     });

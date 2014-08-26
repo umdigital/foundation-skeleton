@@ -75,26 +75,26 @@
             </div>
         </div>
         <?php endif; // widget postifx ?>
-    </div><!-- #SECTION-HEADER -->
 
-    <?php if( has_nav_menu( 'header-menu', 'foundation_skeleton' ) ): ?>
-    <div id="section-header-menu">
-        <div class="row">
-            <div class="<?php echo FoundationSkeleton::getColumns( 'menus:header_menu' );?> columns fskelMenu">
-                <a href="javascript:void();" class="hamburger-header"><h3><i class="fa fa-bars"></i>Menu</h3></a>
-                 <?php wp_nav_menu(array(
-                    'container'      => '',
-                    'fallback_cb'    => false,
-                    'menu_class'     => 'header-menu clearfix',
-                    'theme_location' => 'header-menu',
-                    'depth'          => 1,
-                    'link_before'    => '<span>',
-                    'link_after'     => '</span>'
-                ));?> 
+        <?php if( has_nav_menu( 'header-menu', 'foundation_skeleton' ) ): ?>
+        <div id="zone-header-menu">
+            <div class="row">
+                <div class="<?php echo FoundationSkeleton::getColumns( 'menus:header_menu' );?> columns fskelMenu">
+                    <a href="javascript:void();" class="hamburger-header"><h3><i class="fa fa-bars"></i>Menu</h3></a>
+                     <?php wp_nav_menu(array(
+                        'container'      => '',
+                        'fallback_cb'    => false,
+                        'menu_class'     => 'header-menu clearfix',
+                        'theme_location' => 'header-menu',
+                        'depth'          => 1,
+                        'link_before'    => '<span>',
+                        'link_after'     => '</span>'
+                    ));?> 
+                </div>
             </div>
         </div>
-    </div>
-    <? endif; ?>
+        <? endif; ?>
+    </div><!-- #SECTION-HEADER -->
 
     <div id="section-content">
         <?php if( ($class = FoundationSkeleton::areaEnabled( 'content:widget_prefix1,content:widget_prefix2,content:widget_prefix3,content:widget_prefix4' )) !== false ): ?>
