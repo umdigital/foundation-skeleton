@@ -34,7 +34,7 @@ class FoundationSkeleton
         self::$_gitUpdate['dir'] = get_option( 'template' );
 
         // get current version
-        $theme = wp_get_theme();
+        $theme = wp_get_theme( self::$_gitUpdate['dir'] );
         self::$_version = $theme->get( 'Version' );
 
         /** LOAD CONFIG **/
