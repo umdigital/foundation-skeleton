@@ -2,6 +2,7 @@
 ==================
 Added alt tag to header img
 Fixed pagination bug
+Updated how templates/* files call get_header/footer
 
 1.0.3 (2014-08-27)
 ==================
