@@ -1,3 +1,12 @@
+1.0.4 (2014-08-29)
+==================
+Added alt tag to header img
+Fixed pagination bug
+
+1.0.3 (2014-08-27)
+==================
+Fixed bug with parent theme name detection
+
 1.0.2 (2014-08-26)
 ==================
 Moved section-header-menu into section-header and renamed to zone-header-menu

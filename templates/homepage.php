@@ -1,3 +1,5 @@
+<?php get_header(); ?>
+
 <?php if( have_posts() ): ?>
 
 <div id="posts">
@@ -17,3 +19,5 @@
 </div>
 
 <?php endif; ?>
+
+<?php get_footer(); ?>

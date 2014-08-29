@@ -51,7 +51,7 @@
                 <div class="logo-title <?php echo FoundationSkeleton::getColumns( 'header:branding' );?> columns">
                      <? if( get_header_image() ): ?>
                     <h1 class="logo"><a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>" rel="home">
-                        <img src="<?php header_image(); ?>" title="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>" />
+                        <img src="<?php header_image(); ?>" title="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>" alt="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>" />
                     </a></h1>
                     <? else: ?>
                     <h1><a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>

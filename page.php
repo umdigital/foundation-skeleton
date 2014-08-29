@@ -1,7 +1,5 @@
 <?php
 
-get_header();
-
 global $post;
 
 if( is_front_page() ) {
@@ -10,5 +8,3 @@ if( is_front_page() ) {
 else {
     get_template_part( 'templates/page', ($post->post_type != 'page' ? $post->post_type : null) );
 }
-
-get_footer();
