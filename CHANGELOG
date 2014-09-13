@@ -1,3 +1,7 @@
+1.0.5 (2014-09-13)
+==================
+Bugfix for header postfix zone check
+
 1.0.4 (2014-08-29)
 ==================
 Added alt tag to header img
