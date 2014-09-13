@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <?php if( ($class = FoundationSkeleton::areaEnabled( 'header:widget_prefix' )) !== false ): ?>
+        <?php if( ($class = FoundationSkeleton::areaEnabled( 'header:widget_postfix' )) !== false ): ?>
         <div id="zone-header-postfix" class="<?php echo $class;?>">
             <div class="row">
                 <div id="widget-header-postfix" class="<?php echo FoundationSkeleton::getColumns( 'header:widget_postfix' );?> columns">
