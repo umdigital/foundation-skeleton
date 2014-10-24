@@ -111,66 +111,100 @@
 .lte-ie8 .large-16
 { width: 100%; }
 
-.lte-ie8 .row .small-offset-1,
-.lte-ie8 .row .medium-offset-1,
+
+.lte-ie8 .row .small-offset-1
+{ margin-left: 6.25%; }
+.lte-ie8 .row .small-offset-2
+{ margin-left: 12.5%; }
+.lte-ie8 .row .small-offset-3
+{ margin-left: 18.75%; }
+.lte-ie8 .row .small-offset-4
+{ margin-left: 25%; }
+.lte-ie8 .row .small-offset-5
+{ margin-left: 31.25%; }
+.lte-ie8 .row .small-offset-6
+{ margin-left: 37.5%; }
+.lte-ie8 .row .small-offset-7
+{ margin-left: 43.75%; }
+.lte-ie8 .row .small-offset-8
+{ margin-left: 50%; }
+.lte-ie8 .row .small-offset-9
+{ margin-left: 56.25%; }
+.lte-ie8 .row .small-offset-10
+{ margin-left: 62.5%; }
+.lte-ie8 .row .small-offset-11
+{ margin-left: 68.75%; }
+.lte-ie8 .row .small-offset-12
+{ margin-left: 75%; }
+.lte-ie8 .row .small-offset-13
+{ margin-left: 81.25%; }
+.lte-ie8 .row .small-offset-14
+{ margin-left: 87.5%; }
+.lte-ie8 .row .small-offset-15
+{ margin-left: 93.75%; }
+
+.lte-ie8 .row .medium-offset-1
+{ margin-left: 6.25%; }
+.lte-ie8 .row .medium-offset-2
+{ margin-left: 12.5%; }
+.lte-ie8 .row .medium-offset-3
+{ margin-left: 18.75%; }
+.lte-ie8 .row .medium-offset-4
+{ margin-left: 25%; }
+.lte-ie8 .row .medium-offset-5
+{ margin-left: 31.25%; }
+.lte-ie8 .row .medium-offset-6
+{ margin-left: 37.5%; }
+.lte-ie8 .row .medium-offset-7
+{ margin-left: 43.75%; }
+.lte-ie8 .row .medium-offset-8
+{ margin-left: 50%; }
+.lte-ie8 .row .medium-offset-9
+{ margin-left: 56.25%; }
+.lte-ie8 .row .medium-offset-10
+{ margin-left: 62.5%; }
+.lte-ie8 .row .medium-offset-11
+{ margin-left: 68.75%; }
+.lte-ie8 .row .medium-offset-12
+{ margin-left: 75%; }
+.lte-ie8 .row .medium-offset-13
+{ margin-left: 81.25%; }
+.lte-ie8 .row .medium-offset-14
+{ margin-left: 87.5%; }
+.lte-ie8 .row .medium-offset-15
+{ margin-left: 93.75%; }
+
 .lte-ie8 .row .large-offset-1
 { margin-left: 6.25%; }
-.lte-ie8 .row .small-offset-2,
-.lte-ie8 .row .medium-offset-2,
 .lte-ie8 .row .large-offset-2
 { margin-left: 12.5%; }
-.lte-ie8 .row .small-offset-3,
-.lte-ie8 .row .medium-offset-3,
 .lte-ie8 .row .large-offset-3
 { margin-left: 18.75%; }
-.lte-ie8 .row .small-offset-4,
-.lte-ie8 .row .medium-offset-4,
 .lte-ie8 .row .large-offset-4
 { margin-left: 25%; }
-.lte-ie8 .row .small-offset-5,
-.lte-ie8 .row .medium-offset-5,
 .lte-ie8 .row .large-offset-5
 { margin-left: 31.25%; }
-.lte-ie8 .row .small-offset-6,
-.lte-ie8 .row .medium-offset-6,
 .lte-ie8 .row .large-offset-6
 { margin-left: 37.5%; }
-.lte-ie8 .row .small-offset-7,
-.lte-ie8 .row .medium-offset-7,
 .lte-ie8 .row .large-offset-7
 { margin-left: 43.75%; }
-.lte-ie8 .row .small-offset-8,
-.lte-ie8 .row .medium-offset-8,
 .lte-ie8 .row .large-offset-8
 { margin-left: 50%; }
-.lte-ie8 .row .small-offset-9,
-.lte-ie8 .row .medium-offset-9,
 .lte-ie8 .row .large-offset-9
 { margin-left: 56.25%; }
-.lte-ie8 .row .small-offset-10,
-.lte-ie8 .row .medium-offset-10,
 .lte-ie8 .row .large-offset-10
 { margin-left: 62.5%; }
-.lte-ie8 .row .small-offset-11,
-.lte-ie8 .row .medium-offset-11,
 .lte-ie8 .row .large-offset-11
 { margin-left: 68.75%; }
-.lte-ie8 .row .small-offset-12,
-.lte-ie8 .row .medium-offset-12,
 .lte-ie8 .row .large-offset-12
 { margin-left: 75%; }
-.lte-ie8 .row .small-offset-13,
-.lte-ie8 .row .medium-offset-13,
 .lte-ie8 .row .large-offset-13
 { margin-left: 81.25%; }
-.lte-ie8 .row .small-offset-14,
-.lte-ie8 .row .medium-offset-14,
 .lte-ie8 .row .large-offset-14
 { margin-left: 87.5%; }
-.lte-ie8 .row .small-offset-15,
-.lte-ie8 .row .medium-offset-15,
 .lte-ie8 .row .large-offset-15
 { margin-left: 93.75%; }
+
 
 .lte-ie8 .small-pull-1
 { right: 6.26%; }
@@ -265,6 +299,7 @@
 .lte-ie8 .large-pull-15
 { right: 93.75%; }
 
+
 .lte-ie8 .small-push-1
 { left: 6.25%; }
 .lte-ie8 .small-push-2
@@ -357,6 +392,7 @@
 { left: 87.5%; }
 .lte-ie8 .large-push-15
 { left: 93.75%; }
+
 
 /* Nicolas Gallagher's micro clearfix */
 .lte-ie8 .row { *zoom: 1; }
