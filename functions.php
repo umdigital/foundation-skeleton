@@ -205,16 +205,24 @@ class FoundationSkeleton
 
         // autoload child styles/scripts from styles/scripts directories
         if( PARENT_DIR !== CHILD_DIR ) {
-            $files = glob( CHILD_DIR . DIRECTORY_SEPARATOR . 'styles' . DIRECTORY_SEPARATOR .'*.css' );
-            foreach( $files as $file ) {
+            $files = array();
+            foreach( glob( CHILD_DIR . DIRECTORY_SEPARATOR . 'styles' . DIRECTORY_SEPARATOR .'*.css' ) as $file ) {
+                $files[ preg_replace( '/\.css$/i', '', basename( $file ) ) ] = $file;
+            }
+            ksort( $files );
+            foreach( $files as $key => $file ) {
                 $file = str_replace( CHILD_DIR, '', $file );
-                wp_enqueue_style( 'child-'. str_replace( '.css', '', basename( $file ) ), CHILD_URL . $file, null, self::$_version );
+                wp_enqueue_style( 'child-'. $key, CHILD_URL . $file, null, self::$_version );
             }
 
-            $files = glob( CHILD_DIR . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR .'*.js' );
-            foreach( $files as $file ) {
+            $files = array();
+            foreach( glob( CHILD_DIR . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR .'*.js' ) as $file ) {
+                $files[ preg_replace( '/\.js$/i', '', basename( $file ) ) ] = $file;
+            }
+            ksort( $files );
+            foreach( $files as $key => $file ) {
                 $file = str_replace( CHILD_DIR, '', $file );
-                wp_enqueue_script( 'child-'. str_replace( '.js', '', basename( $file ) ), CHILD_URL . $file, array( 'jquery' ), self::$_version );
+                wp_enqueue_script( 'child-'. $key, CHILD_URL . $file, array( 'jquery' ), self::$_version );
             }
         }
     }
