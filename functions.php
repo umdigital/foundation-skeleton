@@ -15,8 +15,11 @@ include 'includes/functions-phpfix.php';
 
 class FoundationSkeleton
 {
-    static private $_version = 1.0;
-    static private $_config  = array();
+    static private $_version            = 1.0;
+    static private $_foundationVersion  = '5.5.2';
+    static private $_fontAwesomeVersion = '4.3.0';
+
+    static private $_config             = array();
 
     static private $_gitUpdate = array(
         'dir' => 'foundation-skeleton',
@@ -190,14 +193,16 @@ class FoundationSkeleton
      **/
     static public function enqueue()
     {
-        wp_enqueue_style( 'foundation-normalize', PARENT_URL .'/vendor/foundation5/css/normalize.css', null, self::$_version );
-        wp_enqueue_style( 'foundation-base', PARENT_URL .'/vendor/foundation5/css/foundation.min.css', null, self::$_version );
-        wp_enqueue_style( 'font-awesome', PARENT_URL .'/vendor/font-awesome-4.1.0/css/font-awesome.min.css', null, self::$_version );
-        wp_enqueue_style( 'fskeleton-base', PARENT_URL .'/styles/base.css', null, self::$_version );
+        // vendor assets
+        wp_enqueue_style( 'foundation-normalize', PARENT_URL .'/vendor/foundation-'. self::$_foundationVersion .'/css/normalize.css', null, self::$_foundationVersion );
+        wp_enqueue_style( 'foundation-base', PARENT_URL .'/vendor/foundation-'. self::$_foundationVersion .'/css/foundation.min.css', null, self::$_foundationVersion );
+        wp_enqueue_style( 'font-awesome', PARENT_URL .'/vendor/font-awesome-'. self::$_fontAwesomeVersion .'/css/font-awesome.min.css', null, self::$_fontAwesomeVersion );
+        wp_enqueue_script( 'jq-placeholder', PARENT_URL .'/vendor/scripts/jquery.placeholder.js', array( 'jquery' ), self::$_version );
 
-        wp_enqueue_script( 'jq-placeholder', PARENT_URL .'/scripts/jquery.placeholder.js', array( 'jquery' ), self::$_version );
+        wp_enqueue_style( 'fskeleton-base', PARENT_URL .'/styles/base.css', null, self::$_version );
         wp_enqueue_script( 'fskeleton', PARENT_URL .'/scripts/fskeleton.js', array( 'jquery' ), self::$_version );
 
+        // debug assets
         if( self::$_config['debug']['enabled'] ) {
             wp_enqueue_style( 'fskeleton-debug', PARENT_URL .'/styles/fskeleton-debug.css', null, self::$_version );
             wp_enqueue_script( 'fskeleton-debug', PARENT_URL .'/scripts/fskeleton-debug.js', array( 'jquery' ), self::$_version );
@@ -246,7 +251,7 @@ class FoundationSkeleton
     {
         echo '
         <!--[if lt IE 9]>
-        <script src="'. PARENT_URL .'/scripts/rem.js" type="text/javascript"></script>
+        <script src="'. PARENT_URL .'/vendor/scripts/rem.js" type="text/javascript"></script>
         <![endif]-->
         ';
 
