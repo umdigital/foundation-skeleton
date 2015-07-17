@@ -76,7 +76,7 @@
         <?php endif;?>
     </div><!-- SECTION-FOOTER -->
 
-    <?php if( has_nav_menu( 'footer-menu', 'open_skeleton' ) ): ?>
+    <?php if( has_nav_menu( 'footer-menu', 'foundation_skeleton' ) ): ?>
     <div id="section-bottom-menu">
         <div class="row">
             <div class="<?php echo FoundationSkeleton::getColumns( 'menus:bottom_menu' );?> columns fskelMenu">
