@@ -9,6 +9,7 @@ update font awesome to 4.3.0
 update foundation to 5.5.2
 cleanup version numbers for vendor assets
 moved vendor scripts into vendor/scripts/
+- updated placeholder and rem.js
 
 1.0.6 (2015-07-09)
 ==================
