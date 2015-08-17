@@ -17,7 +17,7 @@ class FoundationSkeleton
 {
     static private $_version            = 1.0;
     static private $_foundationVersion  = '5.5.2';
-    static private $_fontAwesomeVersion = '4.3.0';
+    static private $_fontAwesomeVersion = '4.4.0';
 
     static private $_config             = array();
 
