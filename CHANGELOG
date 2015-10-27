@@ -1,3 +1,9 @@
+1.2 (2015-10-27)
+================
+Add 16 col grid support
+rework/reorganize ie8 styles
+add html5 video error reload logic
+
 1.1.2 (2015-08-17)
 ==================
 Update font awesome to 4.4.0

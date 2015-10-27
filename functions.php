@@ -55,6 +55,20 @@ class FoundationSkeleton
             );
         }
 
+        // default grid columns (defaults to 12)
+        if( !isset( self::$_config['grid'] ) || !in_array( self::$_config['grid'], array( 16 ) ) ) {
+            self::$_config['grid'] = false;
+        }
+        // merge col defaults
+        else if( is_file( PARENT_DIR .'/config-'. self::$_config['grid'] .'col.json' ) ) {
+            if( $tColConfig = json_decode( file_get_contents( PARENT_DIR .'/config-'. self::$_config['grid'] .'col.json' ), true ) ) {
+                self::$_config = array_replace_recursive(
+                    self::$_config,
+                    $tColConfig
+                );
+            }
+        }
+
         // tweak debug config if needed
         if( self::$_config['debug']['enabled'] && !self::$_config['debug']['showall'] && !is_user_logged_in() ) {
             self::$_config['debug']['enabled'] = 0;
@@ -172,6 +186,9 @@ class FoundationSkeleton
      **/
     static public function bodyClass( $classes )
     {
+        // add grid class (for ie < 8 style removal)
+        $classes[] = 'fskelGrid-'. (self::$_config['grid'] ?: 12);
+
         if( isset( self::$_config['debug']['enabled'] ) && self::$_config['debug']['enabled'] ) {
             $classes[] = 'fskelDebug';
 
@@ -196,6 +213,12 @@ class FoundationSkeleton
         // vendor assets
         wp_enqueue_style( 'foundation-normalize', PARENT_URL .'/vendor/foundation-'. self::$_foundationVersion .'/css/normalize.css', null, self::$_foundationVersion );
         wp_enqueue_style( 'foundation-base', PARENT_URL .'/vendor/foundation-'. self::$_foundationVersion .'/css/foundation.min.css', null, self::$_foundationVersion );
+
+        // load grid override
+        if( self::$_config['grid'] ) {
+            wp_enqueue_style( 'foundation-base-'. self::$_config['grid'] .'grid', PARENT_URL .'/vendor/foundation-'. self::$_config['grid'] .'col/foundation.min.css', null, self::$_foundationVersion );
+        }
+
         wp_enqueue_style( 'font-awesome', PARENT_URL .'/vendor/font-awesome-'. self::$_fontAwesomeVersion .'/css/font-awesome.min.css', null, self::$_fontAwesomeVersion );
         wp_enqueue_script( 'jq-placeholder', PARENT_URL .'/vendor/scripts/jquery.placeholder.js', array( 'jquery' ), self::$_version );
 
@@ -239,6 +262,17 @@ class FoundationSkeleton
     {
         echo '
         <!--[if lt IE 9]>
+        ';
+
+        // load grid styles or default 12col grid overrides
+        if( self::$_config['grid'] ) {
+            echo '<link rel="stylesheet" href="'. PARENT_URL .'/vendor/foundation-'. self::$_config['grid'] .'col/foundation-ie8.css" />';
+        }
+        else {
+            echo '<link rel="stylesheet" href="'. PARENT_URL .'/vendor/foundation-ie8.css" />';
+        }
+
+        echo '
         <link rel="stylesheet" href="'. PARENT_URL .'/styles/base-ie8.css" />
         <![endif]-->
         ';
@@ -265,18 +299,13 @@ class FoundationSkeleton
             echo '
             <div id="fskelGridOverlay">
                 <div class="row">
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
-                    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                ';
+
+                for( $i=0; $i < (self::$_config['grid'] ?: 12); $i++ ) {
+                echo '    <div class="small-1 columns"><div class="fskelGridBackground"></div></div>
+                ';
+                }
+            echo '
                 </div>
             </div>
             ';
@@ -408,7 +437,9 @@ class FoundationSkeleton
      **/
     static public function getColumns( $config, $default = null )
     {
-        $columns = $default ? $default : array( 'large' => 12 );
+        $defaultColumns = (self::$_config['grid'] ?: 12);
+
+        $columns = $default ? $default : array( 'large' => $defaultColumns );
 
         list( $zone, $location ) = explode( ':', $config );
 
@@ -418,6 +449,8 @@ class FoundationSkeleton
 
         $return = null;
         foreach( $columns as $key => $val ) {
+            $val = $val ?: $defaultColumns;
+
             $return[] = "{$key}-{$val}";
         }
 
@@ -429,11 +462,13 @@ class FoundationSkeleton
      **/
     static public function getContentColumns()
     {
+        $defaultColumns = (self::$_config['grid'] ?: 12);
+
         $columns = self::$_config['general']['columns'];
         $columns = array(
-            'small'  => 12,
-            'medium' => 12,
-            'large'  => 12
+            'small'  => $defaultColumns,
+            'medium' => $defaultColumns,
+            'large'  => $defaultColumns
         );
 
         if( self::areaEnabled( 'content:widget_first' ) !== false ) {
@@ -451,7 +486,7 @@ class FoundationSkeleton
         $return = null;
         foreach( $columns as $key => $val ) {
             if( $val < 1 ) {
-                $val = 12;
+                $val = $defaultColumns;
             }
 
             $return[] = "{$key}-{$val}";

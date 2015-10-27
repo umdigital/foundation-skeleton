@@ -1,4 +1,6 @@
 {
+    "grid": 12,
+
     "menus": {
         "top-menu"   : "Top Menu",
         "header-menu": "Header Menu",
