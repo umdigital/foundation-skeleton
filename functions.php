@@ -77,6 +77,10 @@ class FoundationSkeleton
 
         /** REGISTER WIDGET LOCATIONS **/
         foreach( self::$_config as $zone => $configs ) {
+            if( !$configs || !is_array( $configs ) ) {  
+                continue;
+            }
+
             foreach( $configs as $key => $config ) {
                 if( (strpos( $key, 'widget_' ) !== false) && $config['enabled'] ) {
                     $config['name'] = isset( $config['name'] ) && $config['name']
