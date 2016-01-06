@@ -46,12 +46,13 @@ class FoundationSkeleton
         }
 
         // check for child theme config and merge onto default
+        $childConfig = false;
         if( (CHILD_DIR != PARENT_DIR) && is_file( CHILD_DIR .'/config.json' ) ) {
-            $tConfig = json_decode( file_get_contents( CHILD_DIR .'/config.json' ), true );
+            $childConfig = json_decode( file_get_contents( CHILD_DIR .'/config.json' ), true );
 
             self::$_config = array_replace_recursive(
                 self::$_config,
-                $tConfig
+                $childConfig
             );
         }
 
@@ -59,13 +60,21 @@ class FoundationSkeleton
         if( !isset( self::$_config['grid'] ) || !in_array( self::$_config['grid'], array( 16 ) ) ) {
             self::$_config['grid'] = false;
         }
-        // merge col defaults
+        // replace config with col# defaults
         else if( is_file( PARENT_DIR .'/config-'. self::$_config['grid'] .'col.json' ) ) {
             if( $tColConfig = json_decode( file_get_contents( PARENT_DIR .'/config-'. self::$_config['grid'] .'col.json' ), true ) ) {
                 self::$_config = array_replace_recursive(
                     self::$_config,
                     $tColConfig
                 );
+                
+                // remerge child config on new defaults
+                if( $childConfig ) {
+                    self::$_config = array_replace_recursive(
+                        self::$_config,
+                        $childConfig
+                    );
+                }
             }
         }
 
