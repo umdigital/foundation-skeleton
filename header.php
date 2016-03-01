@@ -13,6 +13,8 @@
 <body <? body_class(); ?>>
 <? FoundationSkeleton::getGridOverlay(); ?>
 <div id="wrapper">
+    <a class="skip-link screen-reader-text" href="#section-content">Skip to content</a>
+
     <? if( has_nav_menu( 'top-menu', 'foundation_skeleton' ) ): ?>
     <div id="section-top-menu">
         <div class="row">

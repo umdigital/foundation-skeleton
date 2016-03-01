@@ -1,3 +1,24 @@
+/* SKIP CONTENT */
+#wrapper > .skip-link:focus {
+    clip: inherit;
+    outline: none;
+    left: 6px;
+    top: 7px;
+    height: auto;
+    width: auto;
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 15px 23px 14px;
+    background: #f1f1f1;
+    color: #0073aa;
+    z-index: 100000;
+    line-height: normal;
+    text-decoration: none;
+    -webkit-box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
+    box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
+}
+
 /* HEADER MENU
 ================================================== */
 #zone-header-menu .fskelMenu .hamburger-header h3 {
