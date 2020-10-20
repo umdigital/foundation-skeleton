@@ -43,7 +43,7 @@
 
         // IE HTML5 VIDEO DOWNLOAD CHECK
         // ie can fail some partial downloads of video files
-         $('video').error(function(){
+        $('video').on('error', function(){
             // if we get code 4, formats are not supported
             // anything else try and reload it, up to 4 times
             if( ($(this).get(0).error.code != 4) && ($(this).data('attempt') < 4) ) {
